@@ -14,3 +14,9 @@ C:\Users\ACER\Documents\GitHub\GiaoHangChatLuong\GiaoHangTietKiem\Common1\bin\De
 C:\Users\ACER\Documents\GitHub\GiaoHangChatLuong\GiaoHangTietKiem\Common1\obj\Debug\Common1.csproj.CoreCompileInputs.cache
 C:\Users\ACER\Documents\GitHub\GiaoHangChatLuong\GiaoHangTietKiem\Common1\obj\Debug\Common1.dll
 C:\Users\ACER\Documents\GitHub\GiaoHangChatLuong\GiaoHangTietKiem\Common1\obj\Debug\Common1.pdb
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\bin\Debug\Common1.dll
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\bin\Debug\Common1.pdb
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\obj\Debug\Common1.csproj.AssemblyReference.cache
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\obj\Debug\Common1.csproj.CoreCompileInputs.cache
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\obj\Debug\Common1.dll
+C:\Users\Admins\Source\Repos\dacn_web_ghcl\GiaoHangTietKiem\Common1\obj\Debug\Common1.pdb
