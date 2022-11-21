@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.PhongBan>
+
+@{
+    ViewBag.Title = "IndexDepartment";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH PHÒNG BAN</h2>
+
+<a href="@Url.Action("CreateDepartment", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenPB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhiemVu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhiemVu)
+            </td>
+            <td>
+                <a href="@Url.Action("EditDepartment", "Admin", new { id = item.MaPB.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsDepartment", "Admin", new { id = item.MaPB.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteDepartment", "Admin", new { id = item.MaPB.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

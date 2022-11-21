@@ -1,0 +1,73 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.KhachNhan>
+
+@{
+    ViewBag.Title = "IndexRecipients";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH KHÁCH NHẬN</h2>
+
+<a href="@Url.Action("CreateRecipients", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                <a href="@Url.Action("EditRecipients", "Admin", new { id = item.MaKN.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsRecipients", "Admin", new { id = item.MaKN.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteRecipients", "Admin", new { id = item.MaKN.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

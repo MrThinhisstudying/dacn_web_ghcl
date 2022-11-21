@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.TuyenDuong>
+
+@{
+    ViewBag.Title = "IndexCommend";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH TUYÊN DƯƠNG</h2>
+
+<a href="@Url.Action("CreateCommend", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKhoBD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKhoKT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaLVC)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhoBD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhoKT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLVC)
+            </td>
+            <td>
+                <a href="@Url.Action("EditCommend", "Admin", new { id = item.MaTD.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsCommend", "Admin", new { id = item.MaTD.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteCommend", "Admin", new { id = item.MaTD.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+</style>

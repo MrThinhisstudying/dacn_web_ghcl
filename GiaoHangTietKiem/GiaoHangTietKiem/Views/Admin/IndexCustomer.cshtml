@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.KhachHang>
+
+@{
+    ViewBag.Title = "IndexCustomer";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH KHÁCH HÀNG</h2>
+
+<a href="@Url.Action("CreateCustomer", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+
+
+<table class="table">
+    <hr />
+    <tr>
+        <th>
+            <strong>Họ tên</strong>
+        </th>
+        <th>
+            <strong>Số điện thoại</strong>
+        </th>
+        <th>
+            <strong>Địa chỉ:</strong>
+        </th>
+        <th>
+            <strong>Giới tính:</strong>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                <a href="@Url.Action("EditCustomer", "Admin", new { id = item.MaKH.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsCustomer", "Admin", new { id = item.MaKH.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteCustomer", "Admin", new { id = item.MaKH.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

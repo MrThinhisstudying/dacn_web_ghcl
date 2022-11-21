@@ -1,0 +1,40 @@
+﻿@model GiaoHangTietKiem.Models.HoaDonVanChuyen
+
+@{
+    ViewBag.Title = "DetailsBill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">CHI TIẾT THÔNG TIN KHÁCH HÀNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <p><strong>Ngày lập: </strong>@Html.DisplayFor(model => model.NgayLapHD)</p>
+        <p><strong>Tổng tiền: </strong>@Html.DisplayFor(model => model.TongTien)</p>
+        <p><strong>Mã nhân viên: </strong>@Html.DisplayFor(model => model.MaNV)</p>
+        <p><strong>Trạng thái: </strong>@Html.DisplayFor(model => model.TrangThai)</p>
+        <p><strong>Mã tuyến đường: </strong>@Html.DisplayFor(model => model.MaTD)</p>
+    </dl>
+</div>
+<div class="actionDesign">
+    <a href="@Url.Action("EditCustomer", "Admin", new { id = Model.MaKH.Replace(" ", "") })">
+        <i class="fa fa-edit btn btn-success btn-sm">Chỉnh sửa</i> |
+    </a>
+    <a href="@Url.Action("IndexCustomer", "Admin")">
+        <i class="btn btn-info btn-sm">Trở lại</i>
+    </a>
+</div>
+<style>
+    .actionDesign {
+        margin-left: 20px;
+    }
+
+    .dl-horizontal {
+        margin-left: 20px;
+    }
+
+    .header-elements {
+        margin: 20px;
+    }
+</style>

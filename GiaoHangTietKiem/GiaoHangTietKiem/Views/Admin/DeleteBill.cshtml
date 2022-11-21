@@ -1,0 +1,89 @@
+﻿@model GiaoHangTietKiem.Models.HoaDonVanChuyen
+
+@{
+    ViewBag.Title = "DeleteBill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">XOÁ HOÁ ĐƠN VẬN CHUYỂN</h2>
+<h3 class="header-elements">Bạn có chắc muốn xoá hoá đơn vận chuyển này?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong>Ngày lập</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLapHD)
+        </dd>
+
+        <dt>
+            <strong>Tổng tiền</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            <strong>Số phiếu giao hàng</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPGH)
+        </dd>
+
+        <dt>
+            <strong>Mã nhân viên</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNV)
+        </dd>
+
+        <dt>
+            <strong>Trạng thái</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            <strong>Mã tuyên dương</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaTD)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="actionDesign">
+            <input type="submit" value="Xoá" class="btn btn-success btn-sm" /> |
+            <a href="@Url.Action("IndexBill", "Admin")">
+                <i class="btn btn-info btn-sm">Trở lại</i>
+            </a>
+        </div>
+    }
+</div>
+
+<style>
+    .dl-horizontal {
+        margin-left: 20px;
+    }
+
+    .header-elements {
+        margin: 20px;
+    }
+
+    .actionDesign {
+        margin-left: 20px;
+    }
+</style>

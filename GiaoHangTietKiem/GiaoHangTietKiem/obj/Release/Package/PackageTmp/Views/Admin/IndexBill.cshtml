@@ -1,0 +1,86 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.HoaDonVanChuyen>
+
+@{
+    ViewBag.Title = "IndexBill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH HOÁ ĐƠN VẬN CHUYỂN</h2>
+
+<a href="@Url.Action("CreateCustomer", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+
+<table class="table">
+    <tr>
+        <th>
+            <strong>Ngày lập</strong>
+        </th>
+        <th>
+            <strong>Tổng tiền</strong>
+        </th>
+        <th>
+            <strong>Phiếu giao hàng</strong>
+        </th>
+        <th>
+            <strong>Mã nhân viên</strong>
+        </th>
+        <th>
+            <strong>Trạng thái</strong>
+        </th>
+        <th>
+            <strong>Mã tuyến đường</strong>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLapHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoPGH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTD)
+            </td>
+            <td>
+                <a href="@Url.Action("EditBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

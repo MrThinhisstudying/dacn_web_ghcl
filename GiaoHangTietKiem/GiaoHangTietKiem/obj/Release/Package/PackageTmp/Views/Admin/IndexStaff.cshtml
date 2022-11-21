@@ -1,0 +1,103 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.NhanVien>
+
+@{
+    ViewBag.Title = "IndexStaff";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH NHÂN VIÊN</h2>
+
+<a href="@Url.Action("CreateStaff", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BacLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNK)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BacLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNK)
+            </td>
+            <td>
+                <a href="@Url.Action("EditStaff", "Admin", new { id = item.MaNV.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsStaff", "Admin", new { id = item.MaNV.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteStaff", "Admin", new { id = item.MaNV.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.HangHoa>
+
+@{
+    ViewBag.Title = "IndexGoods";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH CÁC MẶT HÀNG</h2>
+
+<a href="@Url.Action("CreateGoods", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenHH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonVT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaLHH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonVT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLHH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTien)
+            </td>
+            <td>
+                <a href="@Url.Action("EditGoods", "Admin", new { id = item.MaHH.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsGoods", "Admin", new { id = item.MaHH.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteGoods", "Admin", new { id = item.MaHH.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

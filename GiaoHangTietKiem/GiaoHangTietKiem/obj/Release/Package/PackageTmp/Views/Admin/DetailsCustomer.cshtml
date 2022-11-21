@@ -1,0 +1,39 @@
+﻿@model GiaoHangTietKiem.Models.KhachHang
+
+@{
+    ViewBag.Title = "DetailsCustomer";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">CHI TIẾT THÔNG TIN KHÁCH HÀNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <p><strong>Họ tên: </strong>@Html.DisplayFor(model => model.TenKH)</p>
+        <p><strong>Số điện thoại: </strong>@Html.DisplayFor(model => model.SDT)</p>
+        <p><strong>Địa chỉ: </strong>@Html.DisplayFor(model => model.DiaChi)</p>
+        <p><strong>Giới tính: </strong>@Html.DisplayFor(model => model.GioiTinh)</p>
+    </dl>
+</div>
+<div class="actionDesign">
+    <a href="@Url.Action("EditCustomer", "Admin", new { id = Model.MaKH.Replace(" ", "") })">
+        <i class="fa fa-edit btn btn-success btn-sm">Chỉnh sửa</i> |
+    </a>
+    <a href="@Url.Action("IndexCustomer", "Admin")">
+        <i class="btn btn-info btn-sm">Trở lại</i>
+    </a>
+</div>
+<style>
+    .actionDesign {
+        margin-left: 20px;
+    }
+
+    .dl-horizontal {
+        margin-left: 20px;
+    }
+
+    .header-elements {
+        margin: 20px;
+    }
+</style>

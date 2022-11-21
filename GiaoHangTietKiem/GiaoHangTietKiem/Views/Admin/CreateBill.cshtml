@@ -1,0 +1,226 @@
+﻿@model GiaoHangTietKiem.Models.HoaDonVanChuyen
+@using GiaoHangTietKiem.Models
+@{
+    ViewBag.Title = "CreateBill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Scripts/vietnamlocalselector.js"></script>
+<script>
+    var localpicker = new LocalPicker({
+        province: "ls_province",
+        district: "ls_district",
+        ward: "ls_ward"
+    });
+    var localpicker1 = new LocalPicker({
+        province: "ls_province1",
+        district: "ls_district1",
+        ward: "ls_ward1"
+    });
+</script>
+<h2 class="header-elements">THÊM THÔNG TIN KHÁCH HÀNG</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @{
+            if (Session["PhieuYeuCau"] != null)
+            {
+                CreateBill bill = (CreateBill)Session["CreateBill"];
+                <div class="form-group">
+                    <strong>Thông tin khách hàng</strong>
+                    <div class="col-md-10">
+                        <input name="tenKH" placeholder="Tên người gửi" required="required" disabled="disabled" class="form-control" value="@bill.TenKH">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="sDTKh" disabled="disabled" placeholder="Số điện thoại người gửi" value="@bill.SDTKH" required="required" autofocus />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <span>Giới Tính:</span>
+                    <span>@bill.GioiTinhKH</span>
+                </div>
+                <div class="form-group">
+                    <strong>Địa chỉ người gửi</strong>
+                    <div class="col-md-10">
+                        <input name="diaChiKH" required="required" disabled="disabled" class="form-control" value="@bill.DiaChiKH">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>Thông tin khách nhận</strong>
+                    <div class="col-md-10">
+                        <input name="tenKN" placeholder="Tên người gửi" required="required" disabled="disabled" class="form-control" value="@bill.TenKN">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="sDTKN" disabled="disabled" placeholder="Số điện thoại người gửi" value="@bill.SDTKN" required="required" autofocus />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <span>Giới Tính:</span>
+                    <span>@bill.GioiTinhKN</span>
+                </div>
+                <div class="form-group row">
+                    <strong>Địa chỉ người nhận</strong>
+                    <div class="col-md-10">
+                        <input name="diaChiKN" required="required" disabled="disabled" class="form-control" value="@bill.DiaChiKN">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>Khối lượng</strong>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="Kg" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>COD</strong>
+                    <div class="col-md-10">
+                        <input type="checkbox" name="Cod" />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px">
+                    <strong>Loại vận chuyển</strong>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaLVC", ViewBag.TenLVC as SelectList, new { @class = "select2 form-select form-select-lg" })
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px">
+                    <strong>Loại vận chuyển</strong>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaLHH", ViewBag.LHH as SelectList, new { @class = "select2 form-select form-select-lg" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Thêm mới" class="btn btn-success btn-sm" />
+                        <a href="@Url.Action("IndexBill","Admin")">
+                            <i class="btn btn-info btn-sm">Trở lại</i>
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <strong>Thông tin khách hàng</strong>
+                    <div class="col-md-10">
+                        <input name="TenKH" placeholder="Tên người gửi" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="SDTKh" placeholder="Số điện thoại người gửi" required="required" />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <span>Giới Tính:</span>
+                    <input checked="checked" name="GioiTinhKH" type="radio" value="Nam" /><span>Nam</span>
+                    <input name="gioiTinhKH" type="radio" value="Nữ" /><span>Nữ</span>
+                </div>
+                <div class="form-group row">
+                    <strong>Địa chỉ</strong>
+                    <div class="col-sm-3 col-md-4" style="height: 50px">
+                        <select name="ls_province1" id="Ls_province" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-4" style="margin-left: -50px; ">
+                        <select name="ls_district1" id="Ls_district" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-4" style="margin-left: -50px; ">
+                        <select name="ls_ward1" id="Ls_ward" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10" style="margin-top: 10px;">
+                        <input type="text" class="form-control" name="DiaChiKH" placeholder="Địa chỉ cụ thể" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>Thông tin khách nhận</strong>
+                    <div class="col-md-10">
+                        <input name="TenKN" placeholder="Tên người nhận" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="SDTKN" placeholder="Số điện thoại người nhận" required="required" />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <span>Giới Tính:</span>
+                    <input checked="checked" name="GioiTinhKN" type="radio" value="Nam" /><span>Nam</span>
+                    <input name="gioiTinhKN" type="radio" value="Nữ" /><span>Nữ</span>
+                </div>
+                <div class="form-group row">
+                    <strong>Địa chỉ</strong>
+                    <div class="col-sm-3 col-md-4" style="height: 50px">
+                        <select name="ls_province1" id="Ls_province1" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-4" style="margin-left: -50px; ">
+                        <select name="ls_district1" id="Ls_district1" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                    <div class="col-sm-3 col-md-4" style="margin-left: -50px; ">
+                        <select name="ls_ward1" id="Ls_ward1" class="custom-select border-0 px-4" style="
+                                    height: 100%;border:none;width: 70%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10" style="margin-top: 10px;">
+                        <input type="text" class="form-control" name="DiaChiKN" placeholder="Địa chỉ cụ thể" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>Khối lượng</strong>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" name="Kg" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>COD</strong>
+                    <div class="col-md-10">
+                        <input type="checkbox" name="Cod" />
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px">
+                    <strong>Loại vận chuyển</strong>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaLVC", ViewBag.TenLVC as SelectList, new { @class = "select2 form-select form-select-lg" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Thêm mới" class="btn btn-success btn-sm" />
+                        <a href="@Url.Action("IndexBill","Admin")">
+                            <i class="btn btn-info btn-sm">Trở lại</i>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .form-horizontal {
+        margin-left: 20px;
+    }
+</style>
+

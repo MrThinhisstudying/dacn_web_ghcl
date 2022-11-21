@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GiaoHangTietKiem.NhaKho>
+
+@{
+    ViewBag.Title = "IndexStoreHouse";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="header-elements">DANH SÁCH NHÀ KHO</h2>
+
+<a href="@Url.Action("CreateStoreHouse", "Admin")">
+    <i class="btn btn-success btn-sm">Thêm mới</i>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DienTich)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SucChua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKV)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienTich)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SucChua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKV)
+            </td>
+            <td>
+                <a href="@Url.Action("EditStoreHouse", "Admin", new { id = item.MaNK.Replace(" ", "") })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsStoreHouse", "Admin", new { id = item.MaNK.Replace(" ", "") })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a> |
+                <a href="@Url.Action("DeleteStoreHouse", "Admin", new { id = item.MaNK.Replace(" ", "") })">
+                    <i class="btn btn-danger btn-sm">Xoá</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+
+    .textDesign {
+        margin-left: 20px;
+    }
+
+    .btn-success {
+        margin-left: 20px;
+    }
+</style>

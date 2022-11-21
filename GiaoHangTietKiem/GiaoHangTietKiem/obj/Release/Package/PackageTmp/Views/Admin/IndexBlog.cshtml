@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GiaoHangTietKiem.Models.LoaiBlog>
+
+@{
+    ViewBag.Title = "IndexBlog";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>IndexBlog</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenLoaiBlog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Slug)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoaiBlog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                <a href="@Url.Action("EditBlog", "Admin", new { id = item.MaLoaiBlog })">
+                    <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
+                </a> |
+                <a href="@Url.Action("DetailsBlog", "Admin", new { id = item.MaLoaiBlog })">
+                    <i class="btn btn-warning btn-sm">Chi tiết</i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
